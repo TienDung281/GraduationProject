@@ -1,0 +1,35 @@
+<div class="login">
+  <div class="login-input">
+    <div class="login-item">
+      <div class="login-title">
+        <span>DUNG</span>IMG
+        <p>Tạo tài khoản mới</p>
+      </div>
+      <div class="login-import">
+        <!-- <input type="text" placeholder="Tên"> -->
+        <input type="text" placeholder="Nhập email của bạn" [(ngModel)]="email">
+        <input type="password" placeholder="Nhập mật khẩu" [(ngModel)]="password">
+      </div>
+      <!-- <div class="login-forgot">
+        <p [routerLink]="['forgot']">Quên mật khẩu?</p>
+      </div> -->
+      <div class="login-button">
+        <button (click)="signup()">Đăng ký</button>
+      </div>
+      <div class="login-nick">
+        Sẵn sàng là thành viên? <span (click)="login()">Đăng nhập</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="login-infomation">
+    <div class="login-img">
+      <img src="assets/img/iloveimg.png" alt="">
+      <div class="panagrapt">
+        <h1>Trình chỉnh sửa ảnh nhanh chóng và đơn giản của bạn</h1>
+        <p>DUNGIMG giúp bạn nén, chuyển đổi, cắt và thay đổi kích thước hình ảnh một cách dễ dàng. Tận hưởng bộ công cụ đầy đủ để chỉnh sửa hàng loạt nhiều hình ảnh trực tuyến trong vài giây.</p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,59 @@
+<div class="content" *ngIf="!url && step1 == true">
+  <h1>Nén ảnh</h1>
+  <!-- <p>Nén <span>JPG</span>,<span>PNG</span>,<span>SVG</span> hoặc <span>GIF</span> với chất lượng và độ nén tốt nhất.
+    Giảm kích thước tệp hình ảnh của bạn cùng một lúc.</p> -->
+    <p>Nén <span>JPG</span>,<span>PNG</span>, với chất lượng và độ nén tốt nhất.
+      Giảm kích thước tệp hình ảnh của bạn cùng một lúc.</p>
+  <div class="select-img">
+    <label for="avt">
+      Chọn hình ảnh
+    </label>
+    <input type="file" id="avt" hidden (change)="onSelectImage($event)"
+    accept="image/png, image/gif, image/jpeg, image/svg">
+
+  </div>
+</div>
+
+<div class="form-edit" *ngIf="this.url">
+  <div class="list-img" >
+    <div class="list-img__item" *ngFor="let item of this.listUrl, let i = index">
+      <div class="item-btn">
+        <div class="item-btn__icon">
+          <img src="../../../assets/img/rotate.png" alt="" (click)="rotate(i)">
+        </div>
+        <div class="item-btn__icon">
+          <img src="../../../assets/img/close-image.png" alt="" (click)="deleteImg(i)">
+        </div>
+      </div>
+      <div class="item-url">
+        <img *ngIf="url" class="blah" [src]="item.url" alt="your image" />
+      </div>
+      <div class="item-name">
+        <input type="text" [(ngModel)]="item.name">
+      </div>
+
+    </div>
+    <div class="list-img__input">
+      <label for="avt">
+        <img src="../../../assets/img/icon_cong.svg" alt="">
+      </label>
+      <input type="file" id="avt" hidden (change)="onSelectImage($event)"
+      accept="image/png, image/gif, image/jpeg, image/svg">
+    </div>
+  </div>
+  <div class="parameter">
+    <div class="parameter-text">
+      NÉN HÌNH ẢNH
+    </div>
+    <div class="parameter-note">
+      <div class="parameter-note__text">
+        Tất cả hình ảnh sẽ được nén với chất lượng và tỷ lệ kích thước tệp tốt nhất.
+      </div>
+      <div class="parameter-buton">
+        <button (click)="download()">
+          Nén hình ảnh
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

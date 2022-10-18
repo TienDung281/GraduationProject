@@ -1,0 +1,46 @@
+<div class="row" id="grid-1">
+  <div class="one-half column">
+    <h5 class="choose-new-image">Choose new image</h5>
+  </div>
+  <div class="one-half column">
+    <label class="label-button" for="choose-image">
+
+      <input
+      (change)="onUpFile($event)"
+      type="file"
+      id="choose-image"
+      class=""
+      style="cursor: pointer; ">
+
+    </label>
+  </div>
+</div>
+<div class="row" id="grid-2">
+  <div class="one-half column">
+    <h5>Top Meme Text</h5>
+    <input
+      type="text"
+      id="text-above"
+      style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+      [(ngModel)]="textAbove"
+    />
+  </div>
+  <div class="one-half column">
+    <h5>Bottom Meme Text</h5>
+    <input
+      type="text"
+      id="text-below"
+      style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+      [(ngModel)]="textBelow"
+    />
+  </div>
+</div>
+
+<div class="btn-div">
+  <button (click)="loadImage()" id="btn">Create new meme</button>
+  <button class="down" (click)="download()">Download</button>
+</div>
+
+<div id="canvas-container">
+  <canvas #canvasEl></canvas>
+</div>

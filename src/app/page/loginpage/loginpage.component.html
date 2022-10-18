@@ -1,0 +1,33 @@
+<div class="login">
+  <div class="login-input">
+    <div class="login-item">
+      <div class="login-title">
+        <span>DUNG</span>IMG
+        <p>Đăng nhập vào tài khoản của bạn</p>
+      </div>
+      <div class="login-import">
+        <input type="text" placeholder="Nhập email của bạn" [(ngModel)]="nameLogin">
+        <input type="password" placeholder="Nhập mật khẩu" [(ngModel)]="password" >
+      </div>
+      <div class="login-forgot">
+        <p [routerLink]="['forgot']">Quên mật khẩu?</p>
+      </div>
+      <div class="login-button">
+        <button (click)="login()">Đăng nhập</button>
+      </div>
+      <div class="login-nick">
+        Không có tải khoản? <span (click)="signup()">Tạo một tài khoản mới</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="login-infomation">
+    <div class="login-img">
+      <img src="assets/img/iloveimg.png" alt="">
+      <div class="panagrapt">
+        <h1>Đăng nhập vào không gian làm việc của bạn</h1>
+        <p>Nhập email và mật khẩu của bạn để truy cập tài khoản DUNGIMG của bạn. Bạn đang tiến gần hơn một bước để nâng cao hình ảnh của mình.</p>
+      </div>
+    </div>
+  </div>
+</div>
