@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   LOGIN_URL: ' https://rel9ygc9l3.execute-api.ap-southeast-1.amazonaws.com/Dev/',
+  VIEW_PROFILE: ' https://82mx7ecava.execute-api.ap-southeast-1.amazonaws.com/Dev/'
 };
 
 /*

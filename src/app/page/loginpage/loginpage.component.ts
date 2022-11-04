@@ -13,7 +13,7 @@ export class LoginpageComponent implements OnInit {
   data:any;
   nameLogin = '';
   password = '';
-
+  token:any;
   constructor(
     public router: Router,
     private loginService: LoginService,
@@ -42,7 +42,8 @@ export class LoginpageComponent implements OnInit {
     console.log(this.data)
 
     this.loginService.login(this.data).subscribe((res:any) => {
-      console.log(res);
+      // console.log(res);
+      this.token = res.content.user_token;
       this.localStorageService.set(
         'access_token',
         res.content.user_token
@@ -54,7 +55,11 @@ export class LoginpageComponent implements OnInit {
   home() {
     this.router.navigate(['main/home'])
     setTimeout(() => {
-      window.location.reload();
+      location.reload();
+      // this.localStorageService.set(
+      //   'access_token',
+      //   this.token
+      // );
     }, 300);
   }
 

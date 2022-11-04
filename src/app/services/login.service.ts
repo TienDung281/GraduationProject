@@ -17,7 +17,9 @@ export class LoginService{
   register(data:any) {
     return this.http.post(`${environment.LOGIN_URL}/register`, data);
   }
-
+  otp(data:any) {
+    return this.http.post(`${environment.LOGIN_URL}/register-otp-validation`, data);
+  }
 
 
 }

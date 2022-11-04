@@ -1,0 +1,26 @@
+<div class="content" *ngIf="!url">
+  <h1>Chuyển đổi ảnh sang ảnh đen trắng</h1>
+  <!-- <p>Nén <span>JPG</span>,<span>PNG</span>,<span>SVG</span> hoặc <span>GIF</span> với chất lượng và độ nén tốt nhất.
+    Giảm kích thước tệp hình ảnh của bạn cùng một lúc.</p> -->
+    <!-- <p>Chuyển đổi sang <span>JPG</span>, với chất lượng tốt nhất.
+      </p> -->
+  <div class="select-img">
+    <label for="avt">
+      Chọn hình ảnh
+    </label>
+    <input type="file" id="avt" hidden (change)="GrayScale($event)"
+    accept="image/png, image/gif, image/jpeg, image/svg">
+  </div>
+</div>
+
+
+<!-- <img class="blah" [src]="url" alt="your image" /> -->
+<div class="param" >
+  <img *ngIf="preview"[src]="preview" alt="" width="300px" height="150px">
+  <canvas #myCanvas></canvas>
+</div>
+
+<div class="button">
+  <button *ngIf="linkGrey"  (click)="saveImage('img-new')">Tải ảnh về</button>
+
+</div>

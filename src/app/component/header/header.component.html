@@ -9,27 +9,27 @@
           <li (click)="compress()">Nén ảnh</li>
           <li (click)="resize()">Thay đổi kích thước ảnh</li>
           <li (click)="crop()">Cắt cúp ảnh</li>
-          <li>Chuyển đổi sang JPG</li>
-          <li>Trình biên tập ảnh</li>
+          <li (click)="convert()">Chuyển đổi sang JPG</li>
+          <li (click)="draw()">Chuyển ảnh thành đen trắng</li>
           <li class="list">
             Các công cụ khác
             <img src="assets/img/left-ar.svg" alt="">
             <ul class="list-item">
-              <li>Chuyển đổi từ JPG</li>
+              <li (click)="convertPng()">Chuyển đổi từ JPG sang PNG</li>
               <li (click)="meme()">Công cụ tạo meme</li>
-              <li>Xoay ảnh</li>
+              <li (click)="rotate()">Xoay ảnh</li>
             </ul>
           </li>
         </ul>
-        <div class="user" *ngIf="checklogin == true">
-          <img class="img-avarta" src="../../../assets/img/avarta.png" alt="">
-          <p>Dũng Nguyễn</p>
-          <img src="../../../assets/img/arrow-down.svg" alt="">
-          <div class="list-infomation">
-            <p>Tài khoản</p>
-            <p (click)="login()">Đăng xuất</p>
+          <div class="user" *ngIf="checklogin == true">
+            <img class="img-avarta" src="../../../assets/img/avarta.png" alt="">
+            <p>{{inforUser.last_name}}</p>
+            <img src="../../../assets/img/arrow-down.svg" alt="">
+            <div class="list-infomation">
+              <p (click)="info()">Thông tin tài khoản</p>
+              <p (click)="loginTwo()">Đăng xuất</p>
+            </div>
           </div>
-        </div>
 
 
         <div class="header-login" *ngIf="checklogin == false">

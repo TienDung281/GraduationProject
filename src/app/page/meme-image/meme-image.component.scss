@@ -48,6 +48,11 @@
     text-align: center;
     margin-top: 130px;
     margin-bottom: 50px;
+    canvas {
+      width: 1000px;
+      height: 450px;
+      object-fit: contain;
+    }
   }
 
   .btn-div {

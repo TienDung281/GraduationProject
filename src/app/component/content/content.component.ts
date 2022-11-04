@@ -18,4 +18,52 @@ export class ContentComponent implements OnInit {
     this.router.navigate(['main/compress-image'])
   }
 
+  resize() {
+    this.router.navigate(['main/resize'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
+  meme() {
+    this.router.navigate(['main/meme'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+  rotate() {
+    this.router.navigate(['main/around'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
+  convertPng() {
+    this.router.navigate(['main/convert-png'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
+  draw() {
+    this.router.navigate(['main/draw'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
+  crop() {
+    this.router.navigate(['main/crop-image'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
+  convert() {
+    this.router.navigate(['main/convert'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
 }

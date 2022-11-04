@@ -14,6 +14,24 @@ export class SignupComponent implements OnInit {
   email = '';
   password = '';
 
+  inforUser = {
+
+    first_name: '',
+    last_name: '',
+    login_name: '',
+    email: '',
+    phone_number: '',
+    password: '',
+    password_1: '',
+    // gender: ["N/A"],
+    birth_date: '',
+    // "job_title": [this.infoUserOld.job_title, Validators.required],
+    // "school": [this.infoUserOld.school, [Validators.required, Validators.pattern(/^.{1,255}$/)]],
+    // "province": [this.infoUserOld.province, Validators.required],
+    // "address_details": [this.infoUserOld.address_details, [Validators.required, Validators.pattern(/^.{1,255}$/)]],
+    // "checkbox": [this.infoUserOld.checkbox, Validators.required]
+  }
+
   constructor(
     public router: Router,
     private loginService: LoginService
@@ -27,12 +45,11 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    this.data = {
-      email: this.email,
-      password: this.password
-    };
-    this.loginService.register(this.data).subscribe((res:any) => {
-      console.log(res);
+   console.log(this.inforUser)
+    this.loginService.register(this.inforUser).subscribe((res:any) => {
+      // console.log(res);
+      this.router.navigate(['main/confirm-otp']);
+      localStorage.setItem('emailUser', JSON.stringify(this.inforUser.email));
     })
   }
 }

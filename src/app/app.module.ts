@@ -14,6 +14,13 @@ import { ResizeComponent } from './page/resize/resize.component';
 import { CropImageComponent } from './page/crop-image/crop-image.component';
 import { NgxPhotoEditorModule } from 'ngx-photo-editor';
 import { MemeImageComponent } from './page/meme-image/meme-image.component';
+import { ConvertJpgComponent } from './page/convert-jpg/convert-jpg.component';
+import { DrawImageComponent } from './page/draw-image/draw-image.component';
+import { ConfirmOtpComponent } from './page/confirm-otp/confirm-otp.component';
+import { AroundImageComponent } from './page/around-image/around-image.component';
+import { ConvertPngComponent } from './page/convert-png/convert-png.component';
+import { InforUserComponent } from './page/infor-user/infor-user.component';
+
 
 
 @NgModule({
@@ -22,6 +29,12 @@ import { MemeImageComponent } from './page/meme-image/meme-image.component';
     CompressImageComponent,
     ResizeComponent,
     MemeImageComponent,
+    ConvertJpgComponent,
+    ConfirmOtpComponent,
+    AroundImageComponent,
+    ConvertPngComponent,
+    InforUserComponent,
+    // DrawImageComponent,
 
   ],
   imports: [
@@ -32,7 +45,8 @@ import { MemeImageComponent } from './page/meme-image/meme-image.component';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxPhotoEditorModule
+    NgxPhotoEditorModule,
+
 
   ],
   exports: [NgxSpinnerModule],

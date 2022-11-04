@@ -1,12 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'app-resize',
-  templateUrl: './resize.component.html',
-  styleUrls: ['./resize.component.scss']
+  selector: 'app-around-image',
+  templateUrl: './around-image.component.html',
+  styleUrls: ['./around-image.component.scss']
 })
-export class ResizeComponent implements OnInit {
-
+export class AroundImageComponent implements OnInit {
   url: any;
   fileToUpload: File | null = null;
   step1 = false;
@@ -14,7 +13,6 @@ export class ResizeComponent implements OnInit {
   listUrl: any = [];
   nameImage = '';
   degree = 0;
-
   constructor(
     private renderer: Renderer2
   ) { }
@@ -38,22 +36,6 @@ export class ResizeComponent implements OnInit {
     })
 
   }
-
-  // onSelectImage(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     this.nameImage = event.target.files[0].name;
-  //     console.log(event.target.files[0]);
-  //     var reader = new FileReader();
-  //     reader.onload = (event:any) => {
-  //      this.url = event.target.result;
-  //      this.listUrl.push(this.url);
-  //      console.log(this.listUrl);
-  //     //  console.log(event.target.files);
-  //     //  console.log(event);
-  //     }
-  //     reader.readAsDataURL(event.target.files[0]);
-  //   }
-  // }
 
   onSelectImage(event: any) {
     const file = event.target.files && event.target.files[0];
@@ -107,6 +89,7 @@ export class ResizeComponent implements OnInit {
 
   }
 
+
   download() {
     for(let i = 0; i < this.listUrl.length; i++) {
       // const a = document.createElement('a');
@@ -120,25 +103,30 @@ export class ResizeComponent implements OnInit {
 
       this.rotateImage(this.listUrl[i].url, this.listUrl[i].rotateRad,this.listUrl[i].name)
     }
-
-    // const cnx = this.ctx.getContext('2d');
-    //       cnx.drawImage(this.img,0,0, 300, 150);
   }
 
   canvas = document.createElement("canvas");
   rotateImage = (src: any, rotateRad: any, name: string) => {
     let img = new Image();
     img.src = src;
+    // Create a canvas object.
+    // Wait till the image is loaded.
     img.onload = () => {
         rotateImage();
         this.saveImage(name);
     }
     let rotateImage = () => {
+        // Create canvas context.
         let ctx: any = this.canvas.getContext("2d");
 
+        // Assign width and height.
         this.canvas.width = img.width;
         this.canvas.height = img.height;
-        ctx.translate(this.canvas.width / 2,this.canvas.height / 2)
+
+        ctx.translate(this.canvas.width / 2,this.canvas.height / 2);
+
+        // Rotate the image and draw it on the canvas.
+            // (I am not showing the canvas on the webpage.
         ctx.rotate(rotateRad);
         ctx.drawImage(img, -img.width / 2, -img.height / 2);
     }
@@ -152,6 +140,5 @@ saveImage = (img_name: any) => {
   document.body.appendChild(a);
   a.click();
 }
+
 }
-
-

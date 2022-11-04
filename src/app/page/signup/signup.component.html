@@ -6,9 +6,20 @@
         <p>Tạo tài khoản mới</p>
       </div>
       <div class="login-import">
-        <!-- <input type="text" placeholder="Tên"> -->
-        <input type="text" placeholder="Nhập email của bạn" [(ngModel)]="email">
-        <input type="password" placeholder="Nhập mật khẩu" [(ngModel)]="password">
+        <input type="text" placeholder="Tên" [(ngModel)]="inforUser.last_name">
+        <input type="text" placeholder="Họ và tên đệm" [(ngModel)]="inforUser.first_name">
+        <input type="text" placeholder="Tên đăng nhập" [(ngModel)]="inforUser.login_name">
+        <input type="text" placeholder="Điện thoại" [(ngModel)]="inforUser.phone_number">
+        <input type="text" placeholder="Nhập email của bạn" [(ngModel)]="inforUser.email">
+        <input type="password" placeholder="Nhập mật khẩu" [(ngModel)]="inforUser.password">
+        <input type="password" placeholder="Nhập lại mật khẩu"[(ngModel)]="inforUser.password_1">
+        <!-- <select  placeholder="Giới tính" [(ngModel)]="inforUser.gender">
+          <option value="1">Nam</option>
+          <option value="1">Nữ</option>
+          <option value="1">N/A</option>
+        </select> -->
+        <input type="date" placeholder="Ngày tháng năm sinh" [(ngModel)]="inforUser.birth_date">
+
       </div>
       <!-- <div class="login-forgot">
         <p [routerLink]="['forgot']">Quên mật khẩu?</p>

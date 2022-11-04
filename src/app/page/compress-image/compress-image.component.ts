@@ -46,21 +46,6 @@ export class CompressImageComponent implements OnInit {
     });
   }
 
-  // onSelectImage(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     this.nameImage = event.target.files[0].name;
-  //     console.log(event.target.files[0]);
-  //     var reader = new FileReader();
-  //     reader.onload = (event:any) => {
-  //      this.url = event.target.result;
-  //      this.listUrl.push(this.url);
-  //      console.log(this.listUrl);
-  //     //  console.log(event.target.files);
-  //     //  console.log(event);
-  //     }
-  //     reader.readAsDataURL(event.target.files[0]);
-  //   }
-  // }
 
   onSelectImage(event: any) {
     const file = event.target.files && event.target.files[0];
@@ -120,25 +105,19 @@ export class CompressImageComponent implements OnInit {
 
     img.src = src;
 
-    // Create a canvas object.
-    // Wait till the image is loaded.
     img.onload = () => {
       rotateImage();
-      // this.saveImage(img);
     };
-
     let rotateImage = () => {
-      // Create canvas context.
+
       let ctx: any = this.canvas.getContext('2d');
 
-      // Assign width and height.
+
       this.canvas.width = img.width;
       this.canvas.height = img.height;
 
       ctx.translate(this.canvas.width / 2, this.canvas.height / 2);
 
-      // Rotate the image and draw it on the canvas.
-      // (I am not showing the canvas on the webpage.
       ctx.rotate(rotateRad);
       ctx.drawImage(img, -img.width / 2, -img.height / 2);
 
@@ -153,14 +132,13 @@ export class CompressImageComponent implements OnInit {
             this.imageCompress.byteCount(result)
           );
 
-          // save
           this.saveImage(result, name);
         });
     };
   };
 
   saveImage = (base64: string, name: string) => {
-    console.log('saveImage', this.canvas);
+    // console.log('saveImage', this.canvas);
 
     let a = document.createElement('a');
     a.href = base64;
