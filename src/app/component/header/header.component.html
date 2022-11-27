@@ -6,10 +6,8 @@
       </div>
       <div class="header-list">
         <ul>
-          <li (click)="compress()">Nén ảnh</li>
+          <li (click)="editor()">Trình sửa ảnh</li>
           <li (click)="resize()">Thay đổi kích thước ảnh</li>
-          <li (click)="crop()">Cắt cúp ảnh</li>
-          <li (click)="convert()">Chuyển đổi sang JPG</li>
           <li (click)="draw()">Chuyển ảnh thành đen trắng</li>
           <li class="list">
             Các công cụ khác
@@ -18,6 +16,10 @@
               <li (click)="convertPng()">Chuyển đổi từ JPG sang PNG</li>
               <li (click)="meme()">Công cụ tạo meme</li>
               <li (click)="rotate()">Xoay ảnh</li>
+              <li (click)="crop()">Cắt cúp ảnh</li>
+              <li (click)="compress()">Nén ảnh</li>
+          <li (click)="convert()">Chuyển đổi sang JPG</li>
+
             </ul>
           </li>
         </ul>

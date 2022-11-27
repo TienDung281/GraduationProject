@@ -31,6 +31,14 @@ export class ContentComponent implements OnInit {
       window.location.reload();
     }, 300);
   }
+
+  editor() {
+    this.router.navigate(['main/editor'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+  
   rotate() {
     this.router.navigate(['main/around'])
     setTimeout(() => {

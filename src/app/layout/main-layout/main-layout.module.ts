@@ -14,6 +14,7 @@ import { HomeComponent } from "src/app/page/home/home.component";
 import { InforUserComponent } from "src/app/page/infor-user/infor-user.component";
 import { LoginpageModule } from "src/app/page/loginpage/loginpage.module";
 import { MemeImageComponent } from "src/app/page/meme-image/meme-image.component";
+import { PhotoEditorComponent } from "src/app/page/photo-editor/photo-editor.component";
 import { ResizeComponent } from "src/app/page/resize/resize.component";
 import { SignupComponent } from "src/app/page/signup/signup.component";
 import { AppGuard } from "src/app/util/guards/app.guard";
@@ -93,6 +94,11 @@ import { MainLayoutComponent } from "./main-layout.component";
               path: 'info',
               canActivate: [AppGuard],
               component: InforUserComponent,
+            },
+            {
+              path: 'editor',
+              canActivate: [AppGuard],
+              component: PhotoEditorComponent,
             },
           ],
       }

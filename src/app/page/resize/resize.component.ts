@@ -1,11 +1,11 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-resize',
   templateUrl: './resize.component.html',
   styleUrls: ['./resize.component.scss']
 })
-export class ResizeComponent implements OnInit {
+export class ResizeComponent implements OnInit, AfterViewInit{
 
   url: any;
   fileToUpload: File | null = null;
@@ -14,6 +14,21 @@ export class ResizeComponent implements OnInit {
   listUrl: any = [];
   nameImage = '';
   degree = 0;
+  ctx: any;
+  img:any;
+
+  changeWidth :any;
+  changeHeight :any;
+
+  @ViewChild('myCanvas')
+  myCanvas!: ElementRef<HTMLCanvasElement>;
+
+  public context!: CanvasRenderingContext2D;
+
+  ngAfterViewInit(): void {
+    this.ctx = this.myCanvas.nativeElement;
+    // console.log(this.myCanvas)
+  }
 
   constructor(
     private renderer: Renderer2
@@ -38,22 +53,55 @@ export class ResizeComponent implements OnInit {
     })
 
   }
+  preview: any;
 
-  // onSelectImage(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     this.nameImage = event.target.files[0].name;
-  //     console.log(event.target.files[0]);
-  //     var reader = new FileReader();
-  //     reader.onload = (event:any) => {
-  //      this.url = event.target.result;
-  //      this.listUrl.push(this.url);
-  //      console.log(this.listUrl);
-  //     //  console.log(event.target.files);
-  //     //  console.log(event);
-  //     }
-  //     reader.readAsDataURL(event.target.files[0]);
-  //   }
-  // }
+  linkResize:any;
+  resize(input: any) {
+    if(input.target.files[0]) {
+      console.log(input.target.files[0])
+      let reader = new FileReader();
+      reader.readAsDataURL(input.target.files[0]);
+      reader.onload = (e) => {
+        this.preview = (<FileReader>e.target).result;
+        // if(!this.img) {
+        //   this.img = new Image();
+        // }
+        // this.img.src = (<FileReader>e.target).result;
+
+        // this.preview = (<FileReader>e.target).result;
+
+        // this.img.onload = () => {
+        //   console.log(this.ctx)
+        //   const cnx = this.ctx.getContext('2d');
+        //   cnx.drawImage(this.img, 0,0, this.changeWidth, this.changeHeight);
+        //   const width = this.img.width;
+        //   const height = this.img.height;
+
+
+        //   cnx.width = this.img.width;
+        //   cnx.height = this.img.height;
+
+        //   const imgPixels = cnx.getImageData(0, 0, width, height);
+
+
+
+        // // console.log(this.img)
+
+        // cnx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+        // console.log(cnx.canvas.toDataURL());
+
+        // this.linkResize = cnx.canvas.toDataURL();
+
+        // }
+
+
+          // const cnv = document.createElement('canvas');
+      };
+
+    }
+  }
+
+
 
   onSelectImage(event: any) {
     const file = event.target.files && event.target.files[0];
@@ -108,50 +156,85 @@ export class ResizeComponent implements OnInit {
   }
 
   download() {
-    for(let i = 0; i < this.listUrl.length; i++) {
-      // const a = document.createElement('a');
-      // a.href = this.listUrl[i].url;
-      // a.download = this.listUrl[i].name;
-      // document.body.appendChild(a);
-      // a.click();
-      // console.log(this.nameImage)
-      // console.log(this.listUrl[i].url)
-      console.log( this.listUrl[i].rotateRad);
+    // for(let i = 0; i < this.listUrl.length; i++) {
+    //   // const a = document.createElement('a');
+    //   // a.href = this.listUrl[i].url;
+    //   // a.download = this.listUrl[i].name;
+    //   // document.body.appendChild(a);
+    //   // a.click();
+    //   // console.log(this.nameImage)
+    //   // console.log(this.listUrl[i].url)
+    //   console.log( this.listUrl[i].rotateRad);
 
-      this.rotateImage(this.listUrl[i].url, this.listUrl[i].rotateRad,this.listUrl[i].name)
-    }
+    //   this.rotateImage(this.listUrl[i].url, this.listUrl[i].rotateRad,this.listUrl[i].name)
+    // }
 
     // const cnx = this.ctx.getContext('2d');
     //       cnx.drawImage(this.img,0,0, 300, 150);
+
+    if(!this.img) {
+          this.img = new Image();
+        }
+        this.img.src = this.preview;
+
+
+        this.img.onload = () => {
+          console.log(this.ctx)
+          this.ctx.width = this.changeWidth;
+          this.ctx.height = this.changeHeight;
+          const cnx = this.ctx.getContext('2d');
+          cnx.drawImage(this.img, 0,0, this.changeWidth, this.changeHeight);
+
+        console.log(cnx.canvas.toDataURL());
+
+        this.linkResize = cnx.canvas.toDataURL();
+
+        // const a = document.createElement('a');
+        // a.href = this.linkResize;
+        // a.download = this.nameImage;
+        // document.body.appendChild(a);
+        // a.click();
+
+        }
   }
 
-  canvas = document.createElement("canvas");
-  rotateImage = (src: any, rotateRad: any, name: string) => {
-    let img = new Image();
-    img.src = src;
-    img.onload = () => {
-        rotateImage();
-        this.saveImage(name);
-    }
-    let rotateImage = () => {
-        let ctx: any = this.canvas.getContext("2d");
+  // canvas = document.createElement("canvas");
+//   rotateImage = (src: any, rotateRad: any, name: string) => {
+//     let img = new Image();
+//     img.src = src;
+//     img.onload = () => {
+//         rotateImage();
+//         this.saveImage(name);
+//     }
+//     let rotateImage = () => {
+//         let ctx: any = this.canvas.getContext("2d");
 
-        this.canvas.width = img.width;
-        this.canvas.height = img.height;
-        ctx.translate(this.canvas.width / 2,this.canvas.height / 2)
-        ctx.rotate(rotateRad);
-        ctx.drawImage(img, -img.width / 2, -img.height / 2);
-    }
+//         this.canvas.width = img.width;
+//         this.canvas.height = img.height;
+//         ctx.translate(this.canvas.width / 2,this.canvas.height / 2)
+//         ctx.rotate(rotateRad);
+//         ctx.drawImage(img, -img.width / 2, -img.height / 2);
+//     }
 
 
+// }
+// saveImage = (img_name: any) => {
+//   let a = document.createElement('a');
+//   a.href = this.canvas.toDataURL("image/png");
+//   a.download = img_name;
+//   document.body.appendChild(a);
+//   a.click();
+// }
+
+down() {
+        const a = document.createElement('a');
+        a.href = this.linkResize;
+        a.download = this.nameImage;
+        document.body.appendChild(a);
+        a.click();
 }
-saveImage = (img_name: any) => {
-  let a = document.createElement('a');
-  a.href = this.canvas.toDataURL("image/png");
-  a.download = img_name;
-  document.body.appendChild(a);
-  a.click();
-}
+
+
 }
 
 

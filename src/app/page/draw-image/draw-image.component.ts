@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit,NgModule, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +13,9 @@ import { RouterModule } from '@angular/router';
 export class DrawImageComponent implements OnInit, AfterViewInit {
   url: any;
   ctx: any;
-  constructor() { }
+  constructor(
+    public router: Router,
+  ) { }
 
   @ViewChild('myCanvas')
   myCanvas!: ElementRef<HTMLCanvasElement>;
@@ -95,6 +97,13 @@ export class DrawImageComponent implements OnInit, AfterViewInit {
     a.download = img_name;
     document.body.appendChild(a);
     a.click();
+  }
+
+  back() {
+    this.router.navigate(['main/draw'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   }
 
 }

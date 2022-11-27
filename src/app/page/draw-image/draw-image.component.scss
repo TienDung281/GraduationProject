@@ -50,9 +50,15 @@
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+  gap: 72px;
+  position: relative;
   canvas {
     width: 650px;
     height: 500px;
+  }
+  .arrow {
+    position: absolute;
+    left: 566px;
   }
 }
 
@@ -61,6 +67,7 @@
   display: flex;
   justify-content:center;
   margin-top: 50px;
+  gap: 50px;
   button {
     width: 200px;
     height: 50px;

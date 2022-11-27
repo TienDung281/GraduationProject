@@ -1,4 +1,4 @@
-<div class="content" *ngIf="!url && step1 == true">
+<div class="content" *ngIf="!preview" >
   <h1>Thay đổi kich thước hình ảnh</h1>
   <!-- <p>Thay đổi kích thước <span>JPG</span>,<span>PNG</span>,<span>SVG</span> hoặc <span>GIF</span> với chất lượng và độ nén tốt nhất.
     Giảm kích thước tệp hình ảnh của bạn cùng một lúc.</p> -->
@@ -8,38 +8,41 @@
     <label for="avt">
       Chọn hình ảnh
     </label>
-    <input type="file" id="avt" hidden (change)="onSelectImage($event)"
+    <input type="file" id="avt" hidden (change)="resize($event)"
     accept="image/png, image/gif, image/jpeg, image/svg">
 
   </div>
 </div>
 
-<div class="form-edit" *ngIf="this.url">
+
+
+<div class="form-edit" *ngIf="preview && !linkResize">
   <div class="list-img" >
+    <img [src]="preview" alt="">
     <div class="list-img__item" *ngFor="let item of this.listUrl, let i = index">
       <div class="item-btn">
-        <div class="item-btn__icon">
+        <!-- <div class="item-btn__icon">
           <img src="../../../assets/img/rotate.png" alt="" (click)="rotate(i)">
-        </div>
+        </div> -->
         <div class="item-btn__icon">
           <img src="../../../assets/img/close-image.png" alt="" (click)="deleteImg(i)">
         </div>
       </div>
       <div class="item-url">
-        <img *ngIf="url" class="blah" [src]="item.url" alt="your image" />
+        <img *ngIf="linkResize" class="blah" [src]="linkResize" alt="your image" />
       </div>
       <div class="item-name">
         <input type="text" [(ngModel)]="item.name">
       </div>
 
     </div>
-    <div class="list-img__input">
+    <!-- <div class="list-img__input">
       <label for="avt">
         <img src="../../../assets/img/icon_cong.svg" alt="">
       </label>
       <input type="file" id="avt" hidden (change)="onSelectImage($event)"
       accept="image/png, image/gif, image/jpeg, image/svg">
-    </div>
+    </div> -->
   </div>
   <div class="parameter">
     <div class="parameter-text">
@@ -51,11 +54,11 @@
       </div> -->
       <div class="parameter-note__high">
         <span>Chiều rộng(px)</span>
-        <input type="number">
+        <input type="number" [(ngModel)]="changeWidth">
       </div>
       <div class="parameter-note__high">
         <span>Chiều cao(px)</span>
-        <input type="number">
+        <input type="number" [(ngModel)]="changeHeight">
       </div>
       <div class="parameter-buton">
         <button (click)="download()">
@@ -65,4 +68,12 @@
     </div>
   </div>
 </div>
+
+<div class="canvas">
+  <canvas #myCanvas></canvas>
+</div>
+<div class="down" *ngIf="linkResize">
+  <button (click)="down()">Tải ảnh về</button>
+</div>
+
 

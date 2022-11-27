@@ -48,6 +48,13 @@ export class HeaderComponent implements OnInit {
     }, 300);
   }
 
+  editor() {
+    this.router.navigate(['main/editor'])
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+  }
+
   meme() {
     this.router.navigate(['main/meme'])
     setTimeout(() => {

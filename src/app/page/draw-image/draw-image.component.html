@@ -16,11 +16,12 @@
 
 <!-- <img class="blah" [src]="url" alt="your image" /> -->
 <div class="param" >
-  <img *ngIf="preview"[src]="preview" alt="" width="300px" height="150px">
+  <img *ngIf="preview"[src]="preview" alt="" width="300px" height="300px">
+  <img *ngIf="preview" class="arrow" src="../../../assets/img/thang.svg" alt="">
   <canvas #myCanvas></canvas>
 </div>
 
 <div class="button">
+  <button *ngIf="linkGrey" (click)="back()">Back</button>
   <button *ngIf="linkGrey"  (click)="saveImage('img-new')">Tải ảnh về</button>
-
 </div>

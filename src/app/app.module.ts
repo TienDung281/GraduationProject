@@ -20,6 +20,7 @@ import { ConfirmOtpComponent } from './page/confirm-otp/confirm-otp.component';
 import { AroundImageComponent } from './page/around-image/around-image.component';
 import { ConvertPngComponent } from './page/convert-png/convert-png.component';
 import { InforUserComponent } from './page/infor-user/infor-user.component';
+import { PhotoEditorComponent } from './page/photo-editor/photo-editor.component';
 
 
 
@@ -34,6 +35,7 @@ import { InforUserComponent } from './page/infor-user/infor-user.component';
     AroundImageComponent,
     ConvertPngComponent,
     InforUserComponent,
+    PhotoEditorComponent,
     // DrawImageComponent,
 
   ],
